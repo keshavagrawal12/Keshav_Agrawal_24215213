@@ -3,7 +3,7 @@
 ## Aim
 To implement a single-layer Perceptron from scratch using NumPy and train it to learn the logical **AND gate**.
 
-## Theory / Main Topic
+## Main Topic
 
 A **Perceptron** is the simplest form of an Artificial Neural Network (ANN), introduced by Frank Rosenblatt. It is a single artificial neuron that takes multiple binary inputs, applies weights to them, sums them up, and passes the result through an **activation function** to produce a single binary output (0 or 1).
 
