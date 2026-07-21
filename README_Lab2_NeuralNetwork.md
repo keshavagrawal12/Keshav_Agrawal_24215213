@@ -50,5 +50,22 @@ Input: [1. 1.] => Predicted: 0.2506 => Class: 0
 
 *(Note: Accuracy stayed at 75% after 10 epochs — a real neural network typically needs more epochs to fully converge and correctly classify all AND gate cases; this shows how training progressively improves the model.)*
 
+## Application
+
+A hidden layer lets a network combine inputs in flexible, non-linear ways instead of following one fixed rule:
+
+- **Spam filter**: a suspicious link matters more when paired with an unknown sender, not just added independently.
+- **Smart thermostat**: combines "temperature high" and "someone home" to decide on cooling, with room for softer in-between behavior.
+- **Discount pop-up**: combines "viewed item repeatedly" and "bought similar items before" to trigger an offer.
+
+The real lesson from this lab is that adding a hidden layer makes a network more *capable*, but it still needs enough training to actually learn — 10 epochs wasn't enough here, as shown by the misclassified [1,1] case (see Observations).
+
+## Observations
+
+- Predictions before training were random-ish (e.g., 0.50, 0.45, 0.30, 0.24), as expected from untrained weights.
+- After 10 epochs, accuracy plateaued at **75%**, loss only dropped from ~0.77 to ~0.76.
+- The model misclassified **[1,1] as 0** (predicted 0.2506, needed ≥0.5) — the one case it got wrong.
+- 10 epochs wasn't enough for this network to converge, unlike the Lab 1 Perceptron which converged in the same number of epochs — more layers don't guarantee faster learning.
+
 ## Conclusion
 This lab demonstrates how a multi-layer neural network built with Keras learns from data using layers, activation functions, and an optimizer, contrasting with the manually coded single Perceptron in Lab 1. It also highlights that more epochs/training may be required for the model to fully converge to the correct output.

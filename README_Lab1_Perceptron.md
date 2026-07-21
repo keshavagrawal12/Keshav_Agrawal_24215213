@@ -39,3 +39,22 @@ Input: [0 1], Output: 0
 Input: [1 0], Output: 0
 Input: [1 1], Output: 1
 ```
+
+## Application
+
+The AND gate learned here stands in for any decision that should happen only when **every condition is true at once** — the same pattern shows up in many simple real-world checks:
+
+- **Loan pre-approval**: approve only if "income above limit" AND "debt below limit."
+- **Smart irrigation**: turn sprinkler on only if "soil is dry" AND "no rain forecast."
+- **Door access**: unlock only if "badge is valid" AND "within working hours."
+
+The real lesson is the *learning process* itself: instead of a programmer hard-coding these AND rules, the Perceptron discovers them on its own from examples — the same basic idea behind real scoring and screening systems that learn from data.
+
+## Observations
+
+- The output above (0, 0, 0, 1) is an **exact match** to the AND truth table — the Perceptron reached 100% accuracy in just 10 epochs over 4 examples.
+- Starting from zero weights/bias, it learned the rule purely from the Perceptron Learning Rule updates, with no prior knowledge.
+- It succeeds only because AND is linearly separable; a single Perceptron cannot learn non-linearly separable problems like XOR (motivation for Labs 2 and 3).
+
+## Conclusion
+The Perceptron successfully learned the AND gate from scratch using only NumPy, showing how a single artificial neuron with weights, bias, and a step activation can solve a simple linearly separable classification problem.
