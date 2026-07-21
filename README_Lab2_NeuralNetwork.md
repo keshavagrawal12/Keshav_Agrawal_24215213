@@ -5,7 +5,7 @@ To build, train, and evaluate a simple feed-forward Artificial Neural Network (A
 
 ## Theory / Main Topic
 
-While Lab 1 used a single Perceptron built manually, this lab uses a **Multi-Layer Neural Network** built with the **Keras** library (part of TensorFlow). A real-world ANN usually has multiple layers of neurons instead of just one, allowing it to learn more complex patterns.
+A **Multi-Layer Neural Network** built with the **Keras** library (part of TensorFlow). A real-world ANN usually has multiple layers of neurons instead of just one, allowing it to learn more complex patterns.
 
 Key building blocks used here:
 - **Dense Layer** – A fully connected layer where every neuron receives input from all neurons of the previous layer.

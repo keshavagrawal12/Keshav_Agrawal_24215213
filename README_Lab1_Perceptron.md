@@ -39,6 +39,3 @@ Input: [0 1], Output: 0
 Input: [1 0], Output: 0
 Input: [1 1], Output: 1
 ```
-
-## Conclusion
-The Perceptron successfully learned to mimic the AND gate by adjusting its weights and bias through repeated training, demonstrating the basic working principle behind how neural networks learn from data.
