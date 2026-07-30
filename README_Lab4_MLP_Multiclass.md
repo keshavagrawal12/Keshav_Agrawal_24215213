@@ -30,7 +30,8 @@ Key components used:
 3. **TensorFlow/Keras Implementation**
    - A `Sequential` model is built with two hidden layers.
    - Architecture: Input(4) → Hidden Layer(16, ReLU) → Hidden Layer(8, ReLU) → Output Layer(3, Softmax).
-   - Keras handles training internally via `model.fit()`, using `categorical_crossentropy` loss and the Adam optimizer, for 50 epochs with a 10% validation split.
+   - Total trainable parameters: **243**.
+   - Keras handles training internally via `model.fit()`, using `categorical_crossentropy` loss and the Adam optimizer, for 50 epochs with a 10% validation split (batch size 8).
 
 4. **Result** – The trained model is evaluated on the held-out test set and used to predict the species for each test sample. Predictions are converted back from probability vectors to class labels using `np.argmax()`.
 
@@ -38,17 +39,16 @@ Key components used:
 
 **TensorFlow/Keras:**
 ```
-Test Loss: 0.0971
+Epoch 1/50  - accuracy: 0.5000 - loss: 1.3360 - val_accuracy: 0.5000 - val_loss: 1.1886
+Epoch 50/50 - accuracy: 0.9352 - loss: 0.1649 - val_accuracy: 0.9167 - val_loss: 0.4147
+
+Test Loss: 0.1253
 Test Accuracy: 1.0000
 
-Sample 0: probs=[0.0139, 0.8831, 0.1029] => Predicted class 1 => Actual 1
-Sample 1: probs=[0.9897, 0.0099, 0.0004] => Predicted class 0 => Actual 0
-Sample 2: probs=[0.0000, 0.0022, 0.9978] => Predicted class 2 => Actual 2
-Sample 3: probs=[0.0155, 0.6731, 0.3113] => Predicted class 1 => Actual 1
-
-Predicted classes: [1, 0, 2, 1, 1, 0, 1, 2, 1, 1, 2, 0, 0, 0, 0, 1, 2, 1, 1, 2, 0, 2, 0, 2, 2, 2, 2, 2, 0, 0]
-Actual classes:    [1, 0, 2, 1, 1, 0, 1, 2, 1, 1, 2, 0, 0, 0, 0, 1, 2, 1, 1, 2, 0, 2, 0, 2, 2, 2, 2, 2, 0, 0]
+Predicted classes: [1, 0, 2, 1, 1, 0, 1, 2, 1, 1]
+Actual classes:    [1, 0, 2, 1, 1, 0, 1, 2, 1, 1]
 ```
+*(Only the first 10 test samples are printed by the code; all 10 shown here match exactly.)*
 
 ## Application
 
@@ -62,9 +62,9 @@ The bigger lesson connecting back to Lab 3: going from binary to multiclass isn'
 
 ## Observations
 
-- The model achieved **100% test accuracy** with a low test loss (0.0971), correctly classifying all 30 held-out samples across the three species.
-- Training accuracy rose from **19.4%** (near chance level for 3 classes, ~33%) at epoch 1 to **95.4%** by epoch 50, with validation accuracy following a similar climb from 25% to 91.7%, showing the network steadily learned the decision boundaries.
-- Softmax probabilities were sharply confident on easy cases (e.g., Sample 2 at 99.78% for class 2) but noticeably less confident on borderline cases (e.g., Sample 3 at 67.3% vs. 31.1% between classes 1 and 2), reflecting real overlap between the Versicolor and Virginica species in feature space.
+- The model achieved **100% test accuracy** with a test loss of **0.1253**, correctly classifying all 10 printed held-out samples across the three species (predicted classes matched actual classes exactly).
+- Training accuracy started at **50.0%** at epoch 1 (already above the ~33% chance level for 3 classes, since the network quickly separates the easily-distinguishable Setosa class) and rose steadily to **93.52%** by epoch 50. Validation accuracy followed a similar climb, from **50.0%** to **91.67%**.
+- Loss dropped consistently across training, from **1.3360** at epoch 1 to **0.1649** at epoch 50 (training) and **1.1886** to **0.4147** (validation), showing smooth, stable convergence with no signs of overfitting (train and validation trends move together).
 - Unlike the AND-gate lab where all four inputs were seen repeatedly, Iris has 150 unique samples, so scaling (`StandardScaler`) played a bigger role here in helping the network converge within 50 epochs.
 
 ## Conclusion
