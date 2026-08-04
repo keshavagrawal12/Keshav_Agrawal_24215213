@@ -4,7 +4,7 @@
 To implement a CNN using PyTorch and train it to classify images into two categories — Car vs Bike (binary classification).
 
 ## Main Topic
-Images are different — a 150x150 color image has 67,500 raw pixel values, and a normal MLP can't really pick up on the fact that nearby pixels are related. A CNN fixes this by sliding small filters over the image to detect local patterns (edges, shapes), then stacking layers so later ones combine these into more complex features.
+A single 150x150 color image has 67,500 raw pixel values — way too many for a normal MLP to make sense of, and worse, it has no way of knowing that nearby pixels are actually related to each other. A CNN fixes this by sliding small filters over the image to detect local patterns (edges, shapes), then stacking layers so later ones combine these into more complex features, building up from simple edges to full car/bike shapes.
 
 Main components used:
 - **Conv2D layers** – learn filters that detect patterns in the image (32 → 64 → 128 filters across 3 blocks, going deeper each time)
