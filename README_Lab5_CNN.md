@@ -39,9 +39,7 @@ Actual classes:    ['Bike', 'Car', 'Bike', 'Car', 'Bike', 'Car', 'Bike', 'Bike',
 Binary CNNs like this show up anywhere there's a two-class visual decision to make:
 - Sorting motorsport footage/photos by vehicle type (cars vs bikes) before doing anything sport-specific
 - Medical scans (normal vs abnormal)
-- Manufacturing QC (defective vs non-defective)
-
-Same core idea as Lab 4 — learn features, then make a decision — just with conv/pooling layers added at the front to handle image data instead of pre-measured numeric features.
+- Agricultural crop monitoring (diseased vs healthy leaf)
 
 ## Observations
 - Training accuracy went from 72.78% (epoch 1) to 96.50% (epoch 10), loss dropped from 0.5485 to 0.0967 — steady convergence.
